@@ -1,63 +1,23 @@
 import streamlit as st
 
-st.set_page_config(
-    page_title="CyberSafe Nigeria Assistant",
-    page_icon="🛡️",
-    layout="centered"
-)
-
+st.set_page_config(page_title="CyberSafe Nigeria", page_icon="🛡️", layout="centered")
 st.title("🛡️ CyberSafe Nigeria Assistant")
-st.subheader("Learn to Stay Safe Online")
-st.write(
-    "Welcome! This application teaches you how to protect "
-    "yourself, your business, and your personal information online."
-)
+st.subheader("Stay Safe Online — Kare Kanka a Intanet")
+st.write("Welcome! Barka da zuwa!")
 
-language = st.selectbox(
-    "Choose Your Language / Zaɓi Harshe",
-    ["English", "Hausa"]
-)
+language = st.selectbox("Choose language / Zaɓi harshe", ["English", "Hausa"])
+topic = st.selectbox("Topic", ["Phishing", "Passwords", "2FA", "Malware", "Personal Info"])
 
-if language == "English":
-    st.info(
-        "Cybersecurity means protecting your devices, accounts, "
-        "and personal information from online threats."
-    )
+tips = {"Phishing": "Don't click unknown links. Kada ka danna link.", "Passwords": "Use strong passwords. Yi kalmar sirri mai karfi.", "2FA": "Enable 2FA. Never share OTP.", "Malware": "Download only from trusted sources.", "Personal Info": "Don't share PIN online."}
 
-    topics = {
-        "Phishing Scams": [
-            "Be careful with suspicious emails and messages.",
-            "Do not click unknown links.",
-            "Never share your password or bank OTP.",
-            "Verify the sender before responding."
-        ],
-        "Strong Passwords": [
-            "Use a long, unique password for every account.",
-            "Avoid your name, birthday, or simple number sequences.",
-            "Never share your password with strangers.",
-            "Use a password manager if possible."
-        ],
-        "Two-Factor Authentication": [
-            "Enable two-factor authentication (2FA) on important accounts.",
-            "It adds another layer of protection.",
-            "Never share verification codes with anyone.",
-            "Keep your account recovery details safe."
-        ],
-        "Malware and Unsafe Downloads": [
-            "Download applications from trusted sources.",
-            "Avoid suspicious attachments.",
-            "Keep your phone and applications updated.",
-            "Do not install applications you do not trust."
-        ],
-        "Protecting Personal Information": [
-            "Avoid sharing sensitive information publicly.",
-            "Check privacy settings on social media.",
-            "Use secure connections for sensitive activities.",
-            "Be careful about what you share online."
-        ]
-    }
+if st.button("Show Tips"):
+    st.info(tips[topic])
 
-else:
-    st.info(
-        "Tsaron yanar gizo yana nufin kare wayarka, "
-        "asusunka
+q = st.radio("Someone asks for your OTP?", ["Send it", "Never share it"])
+if st.button("Check Answer"):
+    if q == "Never share it":
+        st.success("Correct! Daidai ne!")
+    else:
+        st.error("Wrong! Kada ka bayar da OTP!")
+
+st.caption("CyberSafe Nigeria - Educational Project")
